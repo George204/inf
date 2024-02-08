@@ -1,3 +1,4 @@
+#include <cctype>
 #include <iostream>
 #include <conio.h>
 #include <string>
@@ -5,8 +6,6 @@
 #define max 100
 
 using namespace std;
-
-int tab[max];
 
 int los(int x){
 	int r=1+rand()%(x-2);
@@ -24,7 +23,7 @@ int input(string g){
 	return x;
 }
 void piszt(int tab[max], int n){
-    cout<<"Elementy Tablicy:";
+    cout<<"\nElementy Tablicy:";
     for(int i = 0;i < n;i++){
         cout<<tab[i]<<",";
     }
@@ -41,19 +40,36 @@ void lost(int tab[max], int n){
         tab[i]=los(9);    
     }    
 }
+char getin(){
+    char wart = 'z';
+    do{
+        wart = tolower(getch());
+    }while(wart != 't' and wart != 'n');
+    return wart;
+}
+string sprczyw(int n,int tab[max] ,int size){
+    for(int i=0;i<size;i++){
+        if( tab[i] == n){return "tak index="+to_string(i);}
+    }
+    return "nie";
+}
 int main(){
     srand(time(NULL));
     bool re = true;
     do{
-        int size = input("Ile elementow chcesz podac:");        
-        int tab[max];
-        czytajt(tab, size);
-        piszt(tab, size);
-        lost(tab, size);
-        cout<<"\nTwoje liczby odwrotnie to: ";
-        for(int i=0;i<size;i++){
-            cout<<tab[size-i-1]<<" ";
+        int size = input("Jaki ma byc rozmiar tablicy: ");        
+        int tab[size];
+        cout<<"podajemy ? t or n\n";
+        char ans = getin();
+        if(ans == 't'){
+            czytajt(tab, size);
         }
+        else{
+            lost(tab, size);
+        }
+        piszt(tab, size);
+        int szuk = input("\njako liczbe chcesz sprawdzic?: ");
+        cout<<"czy jest:"<<sprczyw(szuk,tab,size);
         cout<<"\njeszcze raz? (T/N)"<<endl;
         if (tolower(getch())!='t'){re = false;}
     }while(re==true);

@@ -1,15 +1,17 @@
+#include <iomanip>
+#include <ios>
 #include <iostream>
 #include <conio.h>
 #include <string>
 #include <ctime>
 #define max 100
 
-using namespace std;
-
 //#include <termios.h> 
 //#include <unistd.h> 
 //#include <stdio.h> 
-///* reads from keypress, doesn't echo */ 
+
+using namespace std;
+
 //int getch(void) 
 //{ 
 //    struct termios oldattr, newattr; 
@@ -22,12 +24,8 @@ using namespace std;
 //    tcsetattr(STDIN_FILENO, TCSANOW, &oldattr); 
 //    return ch; 
 //}
-
-int tab[max];
-int tab2[max][max];
-
 int los(int x){
-	int r=1+rand()%(x-2);
+	int r=1+rand()%(x);
 	return r;
 }
 int input(string g){
@@ -41,30 +39,13 @@ int input(string g){
 	}while(k==false);
 	return x;
 }
-void piszt(int tab[max], int n){
-    cout<<"Elementy Tablicy:";
-    for(int i = 0;i < n;i++){
-        cout<<tab[i]<<",";
-    }
-}
-void czytajt(int tab[max], int n){
-    for(int i=0;i<n;i++){
-        string pyt = "Podaj element nr "+to_string(i+1)+":";
-        int x = input(pyt);
-        tab[i] = x;
-    }
-}
-void lost(int tab[max], int n){
-    for(int i=0;i<n;i++){
-        tab[i]=los(9);    
-    }    
-}
 void piszt2(int tab[max][max],int n,int m){
     for(int i=0;i<n;i++){
-        cout<<"\nElementy "<<i<<" wirsza: ";
+        cout<<"Elementy "<<i<<" wirsza: ";
         for(int j=0;j<m;j++){
             cout<<tab[i][j]<<",";
         }
+        cout<<endl;
     }
 }
 void czytajt2(int tab[max][max], int n, int m){
@@ -78,18 +59,58 @@ void czytajt2(int tab[max][max], int n, int m){
 }
 void lost2(int tab[max][max], int n, int m){
     for(int i=0;i<n;i++){
-        for(int j=0;j<n;j++){
+        for(int j=0;j<m;j++){
             tab[i][j]=los(9);    
         }    
     }
+}
+char getin(){
+    char wart = 'z';
+    do{
+        wart = tolower(getch());
+    }while(wart != 't' and wart != 'n');
+    return wart;
+}
+//2.15.cpp
+bool pierw(int n){
+    bool out = true;
+    for(int i=2;i<n/2+1;i++){
+        if(n%i==0){out = false;break;}
+    }
+    return out;
+}
+void znajdz(int tab[max][max], int n, int m){
+    int suma = 0;
+    float il = 0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            int wart = tab[i][j];    
+            if(pierw(wart)){
+                cout<<"("<<i<<","<<j<<") "<<wart<<" jest pierwsza\n";
+                suma = suma + wart;
+                il++;
+            }
+        }
+    }
+    cout<<fixed<<setprecision(2)<<"suma: "<<suma<<"\nsrednia: "<<suma/il;
 }
 int main(){
     srand(time(NULL));
     bool re = true;
     do{
         int tab[max][max];
-        lost2(tab, 5, 5);
-        piszt2(tab, 5, 5);
+        int kol = input("Ile kolumn: ");
+        int wier = input("Ile wierszy: ");
+        cout<<"podajemy ? t or n\n";
+        char ans = getin();
+        if(ans == 't'){
+            czytajt2(tab,wier, kol);
+        }
+        else{
+            lost2(tab, wier, kol);
+        }
+        piszt2(tab, wier, kol);
+        znajdz(tab, wier, kol);
         cout<<"\njeszcze raz? (T/N)"<<endl;
         if (tolower(getch())!='t'){re = false;}
     }while(re==true);

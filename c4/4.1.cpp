@@ -1,10 +1,27 @@
 #include <iostream>
-#include <conio.h>
+//#include <conio.h>
 #include <string>
 #include <ctime>
 #define max 100
 
+#include <termios.h> 
+#include <unistd.h> 
+#include <stdio.h> 
+
 using namespace std;
+
+int getch(void) 
+{ 
+    struct termios oldattr, newattr; 
+    int ch; 
+    tcgetattr(STDIN_FILENO, &oldattr); 
+    newattr = oldattr; 
+    newattr.c_lflag &= ~(ICANON | ECHO); 
+    tcsetattr(STDIN_FILENO, TCSANOW, &newattr); 
+    ch = getchar(); 
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldattr); 
+    return ch; 
+}
 
 int tab[max];
 
@@ -49,7 +66,6 @@ int main(){
         int tab[max];
         czytajt(tab, size);
         piszt(tab, size);
-        lost(tab, size);
         cout<<"\nTwoje liczby odwrotnie to: ";
         for(int i=0;i<size;i++){
             cout<<tab[size-i-1]<<" ";

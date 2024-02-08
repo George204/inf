@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "../../c/c3"
+		},
+		{
+			"path": "."
+		},
+		{
+			"path": "../p2"
+		},
+		{
+			"path": "../p1"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp"
+		}
+	}
+}

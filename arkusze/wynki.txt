@@ -1,0 +1,14 @@
+6.1
+	t4: 905ton
+6.2
+	22
+6.3
+		najwięcej	najmneij
+02.01.2016	t3 43	t4 3
+05.08.2018	t5 125	t1 3
+6.4
+w arkuszu
+6.5
+	data		stan talarów 
+na koniec	18.12.2018	95844
+najwięcej	08.10.2018	100079

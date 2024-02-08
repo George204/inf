@@ -1,0 +1,80 @@
+#include <iostream>
+#include <conio.h>
+#include <string>
+#include <ctime>
+#define max 100
+
+using namespace std;
+
+int tab[max];
+int tab2[max][max];
+
+int los(int x){
+	int r=1+rand()%(x-2);
+	return r;
+}
+int input(string g){
+	bool k = false;
+	int x = 0;
+	do{
+		cout<<g;cin>>x;
+		if(cin.fail()){cout<<"wartosc nieprawidlowa\n";}
+		else{k = true;}
+		cin.clear();cin.sync();
+	}while(k==false);
+	return x;
+}
+void piszt(int tab[max], int n){
+    cout<<"Elementy Tablicy:";
+    for(int i = 0;i < n;i++){
+        cout<<tab[i]<<",";
+    }
+}
+void czytajt(int tab[max], int n){
+    for(int i=0;i<n;i++){
+        string pyt = "Podaj element nr "+to_string(i+1)+":";
+        int x = input(pyt);
+        tab[i] = x;
+    }
+}
+void lost(int tab[max], int n){
+    for(int i=0;i<n;i++){
+        tab[i]=los(9);    
+    }    
+}
+void piszt2(int tab[max][max],int n,int m){
+    for(int i=0;i<n;i++){
+        cout<<"\nElementy "<<i<<" wirsza: ";
+        for(int j=0;j<m;j++){
+            cout<<tab[i][j]<<",";
+        }
+    }
+}
+void czytajt2(int tab[max][max], int n, int m){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            string pyt = "Podaj element "+to_string(i)+","+to_string(j)+":";
+            int x = input(pyt);
+            tab[i][j] = x;
+        }
+    }
+}
+void lost2(int tab[max][max], int n, int m){
+    for(int i=0;i<n;i++){
+        for(int j=0;j<n;j++){
+            tab[i][j]=los(9);    
+        }    
+    }
+}
+int main(){
+    srand(time(NULL));
+    bool re = true;
+    do{
+        int tab[max][max];
+        lost2(tab, 5, 5);
+        piszt2(tab, 5, 5);
+        cout<<"\njeszcze raz? (T/N)"<<endl;
+        if (tolower(getch())!='t'){re = false;}
+    }while(re==true);
+    return 0;
+}

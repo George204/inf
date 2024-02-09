@@ -9,6 +9,7 @@
 #include <unistd.h> 
 #include <stdio.h> 
 using namespace std;
+
 int getch(void) 
 { 
     struct termios oldattr, newattr; 
@@ -20,6 +21,17 @@ int getch(void)
     ch = getchar(); 
     tcsetattr(STDIN_FILENO, TCSANOW, &oldattr); 
     return ch; 
+}
+char getin(){
+    char wart = 'z';
+    do{
+        wart = tolower(getch());
+    }while(wart != 't' and wart != 'n');
+    return wart;
+}
+void jeszcze(bool &re){
+    cout<<"\njeszcze raz? (T/N)"<<endl;
+    if (getin()!='t'){re = false;}
 }
 int los(int x){
 	int r=1+rand()%(x-2);
@@ -41,6 +53,7 @@ void piszt(int tab[max], int n){
     for(int i = 0;i < n;i++){
         cout<<tab[i]<<",";
     }
+    cout<<endl;
 }
 void czytajt(int tab[max], int n){
     for(int i=0;i<n;i++){
@@ -56,10 +69,11 @@ void lost(int tab[max], int n){
 }
 void piszt2(int tab[max][max],int n,int m){
     for(int i=0;i<n;i++){
-        cout<<"\nElementy "<<i<<" wirsza: ";
+        cout<<"Elementy "<<i<<" wirsza: ";
         for(int j=0;j<m;j++){
             cout<<tab[i][j]<<",";
         }
+        cout<<endl;
     }
 }
 void czytajt2(int tab[max][max], int n, int m){

@@ -48,9 +48,9 @@ int main(){
     bool re = true;
     do{
         int wspol[max][max] = {
-            {2,3,5,5},
-            {-1,4,6,6},
-            {3,-2,7,7}};//105
+            {1,3,2,7},
+            {7,4,9,15},
+            {5,6,8,17}};
         int wt[max][max], wxt[max][max], wyt[max][max], wzt[max][max];
         makew(wspol,wt,wxt,wyt,wzt);
         float wyz[4] = {wyznacznik(wt),wyznacznik(wxt),wyznacznik(wyt),wyznacznik(wzt)};

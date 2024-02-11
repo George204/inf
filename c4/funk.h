@@ -2,15 +2,12 @@
 #include <conio.h>
 #include <string>
 #include <ctime>
-#define max 100
-
-
+#define maxx 100
 //#include <termios.h> 
 //#include <unistd.h> 
 //#include <stdio.h> 
 
 using namespace std;
-
 //
 //int getch(void) 
 //{ 
@@ -50,26 +47,26 @@ int input(string g){
 	}while(k==false);
 	return x;
 }
-void piszt(int tab[max], int n){
+void piszt(int tab[maxx], int n){
     cout<<"Elementy Tablicy:";
     for(int i = 0;i < n;i++){
         cout<<tab[i]<<",";
     }
     cout<<endl;
 }
-void czytajt(int tab[max], int n){
+void czytajt(int tab[maxx], int n){
     for(int i=0;i<n;i++){
         string pyt = "Podaj element nr "+to_string(i+1)+":";
         int x = input(pyt);
         tab[i] = x;
     }
 }
-void lost(int tab[max], int n){
+void lost(int tab[maxx], int n){
     for(int i=0;i<n;i++){
         tab[i]=los(9);    
     }    
 }
-void piszt2(int tab[max][max],int n,int m){
+void piszt2(int tab[maxx][maxx],int n,int m){
     for(int i=0;i<n;i++){
         cout<<"Elementy "<<i<<" wirsza: ";
         for(int j=0;j<m;j++){
@@ -78,7 +75,7 @@ void piszt2(int tab[max][max],int n,int m){
         cout<<endl;
     }
 }
-void czytajt2(int tab[max][max], int n, int m){
+void czytajt2(int tab[maxx][maxx], int n, int m){
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
             string pyt = "Podaj element "+to_string(i)+","+to_string(j)+":";
@@ -87,7 +84,7 @@ void czytajt2(int tab[max][max], int n, int m){
         }
     }
 }
-void lost2(int tab[max][max], int n, int m){
+void lost2(int tab[maxx][maxx], int n, int m){
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
             tab[i][j]=los(9);    

@@ -1,5 +1,5 @@
-#define max 100
 #include "funk.h"
+#define max 100
 
 using namespace std;
 

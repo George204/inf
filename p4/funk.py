@@ -28,8 +28,17 @@ def jeszcze():
 def los(x):
     return randint(0,x) 
 
-def inputh(n):
-    x = int(input(f"podaj {n}:"))
+def inputh(g):
+    k = False
+    x = 0
+    while True:
+        try:
+            x = int(input(g))
+            k = True
+        except ValueError:
+            print("wariosc nieprawidlowa")
+        if k:
+            break 
     return x
 
 def piszt(tab,n):
@@ -40,7 +49,7 @@ def piszt(tab,n):
 
 def czytajt(tab,n):
     for i in range(0,n):
-        x = inputh(f"elemnt nr {i+1}")
+        x = inputh(f"elemnt nr {i+1}:")
         tab[i] = x;
 
 def lost(tab,n):
@@ -57,7 +66,7 @@ def piszt2(tab, n, m):
 def czytajt2(tab,n, m):
     for i in range(0,n):
         for j in range(0,m):
-            x = inputh(f"elemnt ({i+1},{j+1})")
+            x = inputh(f"elemnt ({i+1},{j+1}):")
             tab[i][j] = x; 
 
 def lost2(tab,n, m):

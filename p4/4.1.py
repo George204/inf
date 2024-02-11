@@ -4,7 +4,7 @@ max = 5
 def main():
     re = True
     while re == True:
-        size = inputh("Ile elemntuw chcesz podac")
+        size = inputh("Ile elemntuw chcesz podac:")
         tab = [0,]*size
         czytajt(tab,size)
         piszt(tab,size)
@@ -16,9 +16,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-
 

@@ -2,11 +2,10 @@
 #include <conio.h>
 #include <string>
 #include <ctime>
-#define maxx 100
+#define maxx 12
 //#include <termios.h> 
 //#include <unistd.h> 
 //#include <stdio.h> 
-
 #define nor   "\033[0m"
 #define bla   "\033[30m"      
 #define red     "\033[31m"      
@@ -16,6 +15,14 @@
 #define pir "\033[35m"      
 #define cya    "\033[36m"      
 #define whi   "\033[37m"
+#define bbla   "\033[40m"      
+#define bred     "\033[41m"      
+#define bgre   "\033[42m"      
+#define byel  "\033[43m"      
+#define bblu    "\033[44m"      
+#define bpir "\033[45m"      
+#define bcya    "\033[46m"      
+#define bwhi   "\033[47m"
 
 using namespace std;
 //
@@ -47,8 +54,39 @@ void jeszcze(bool &re){
     if (getin()!='t'){re = false;}
 }
 int los(int x){
-	int r=1+rand()%(x-2);
+	int r=1+rand()%(x);
 	return r;
+}
+void color(int n){
+    switch (n) {
+        case 0:
+            cout<<cya<<bblu<<"  "<<nor;
+            break;
+        case 1:
+            cout<<whi<<bbla<<"1 "<<nor;
+            break;
+        case 2:
+            cout<<whi<<bbla<<"2 "<<nor;
+            break;
+        case 3:
+            cout<<whi<<bbla<<"3 "<<nor;
+            break;
+        case 4:
+            cout<<whi<<bbla<<"4 "<<nor;
+            break;
+        case 5:
+            cout<<yel<<bblu<<"  "<<nor;
+            break;
+        case 7:
+            cout<<red<<bblu<<"7 "<<nor;
+            break;
+        case 8:
+            cout<<gre<<bblu<<"8 "<<nor;
+            break;
+        default:
+            cout<<blu<<bblu<<n<<nor;
+            break;
+    }
 }
 int input(string g){
 	bool k = false;

@@ -1,3 +1,4 @@
+#include <cstdlib>
 #include <iostream>
 #include <conio.h>
 #include <string>
@@ -52,6 +53,7 @@ char getin(){
 void jeszcze(bool &re){
     cout<<"\njeszcze raz? (T/N)"<<endl;
     if (getin()!='t'){re = false;}
+    else {system("cls");}
 }
 int los(int x){
 	int r=1+rand()%(x);
@@ -78,10 +80,10 @@ void color(int n){
             cout<<yel<<bblu<<"  "<<nor;
             break;
         case 7:
-            cout<<red<<bblu<<"7 "<<nor;
+            cout<<red<<bblu<<"O "<<nor;
             break;
         case 8:
-            cout<<gre<<bblu<<"8 "<<nor;
+            cout<<gre<<bblu<<"X "<<nor;
             break;
         default:
             cout<<blu<<bblu<<n<<nor;

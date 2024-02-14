@@ -1,30 +1,25 @@
 #include "funk.h"
-#include <cctype>
 #include <iostream>
 #include <stdlib.h>
-#define max 12
 using namespace std;
-int s = 12;
 
-void plansza(int tab[max][max],int x,int y){
-    gotoxy(x, y);
+void plansza(int tab[12][12],int x,int y){
     char top[12] = {'0','A','B','C','D','E','F','G','H','I','J','0'};
-    for (auto &&znak : top) {
-        cout<<bla<<bwhi<<znak<<' '<<nor;
+    for(int i = 0;i<12;i++){
+        gotoxy(x+i*2, y);
+        cout<<bla<<bwhi<<top[i]<<' '<<nor;
+        gotoxy(x+i*2, y+11);
+        cout<<bla<<bwhi<<top[i]<<' '<<nor;
     }
-    for(int i=1;i<s-1;i++){
+    for(int i=1;i<11;i++){
         gotoxy(x, y+i);
-        cout<<bla<<bwhi<<i<<' '<<nor;
-        for(int j=1;j<s-1;j++){
+        cout<<bla<<bwhi<<"  \033[2D"<<i<<nor;
+        for(int j=1;j<11;j++){
             gotoxy(x+(j*2), y+i);
             color(tab[i][j]);
         }
         gotoxy(x+22, y+i);
-        cout<<bla<<bwhi<<i<<' '<<nor;
-    }
-    gotoxy(x, y+11);
-    for (auto &&znak : top) {
-        cout<<bla<<bwhi<<znak<<' '<<nor;
+        cout<<bla<<bwhi<<"  \033[2D"<<i<<nor;
     }
 }
 void zeruj(int tab[12][12]){
@@ -53,44 +48,37 @@ void losx(int tab[12][12],int n){
         tab[y+i*k-(k-1)][x-(k-1)*i-k]=5;
     }
 }
-int Kol(){
-    int kol = 0;
-    gotoxy(3, 15);
-    cout<<"Podaj Kolumne (A...I): ";
-    do{
-        kol = tolower(getch());
-        kol -= 96;
-    }while(kol<1 or kol > 10);
-    char znak = kol+64;
-    gotoxy(3, 16);
+int podaj(int d, bool&re){
+    int input = 0;
+    if(d == 1){
+        gotoxy(1, 14);
+        cout<<line<<endl<<"  Podaj Kolumne (A...I): "<<endl<<line;
+    }
+    else{
+        gotoxy(3, 14);
+        cout<<"10 to ':'\n  Podaj Wiersz (1...10): ";
+    }
+    do {
+        input = get(re);
+        if(input == 113){break;}
+        input -= (3-d)*48;
+    }while (input<1 or input > 10);
+    char znak = input + (3-d)*48;
+    gotoxy(2+d, 16);
     cout<<znak;
-    return kol;
+    return input;
 }
-int Wier(){
-    gotoxy(3, 14);
-    cout<<"10 to ':'";
-    int wier = 0;
-    gotoxy(3, 15);
-    cout<<"Podaj Wiersz (1...10): ";
-    do{   
-        wier = tolower(getch());
-        wier -= 48;
-    }while(wier<1 or wier > 10);
-    int znak = wier;
-    gotoxy(4, 16);
-    cout<<znak;
-    return wier;
-}
-
 void lost(int tab[12][12]){
     int statki[10] = {4,3,3,2,2,2,1,1,1,1};
     for (auto &&statek : statki) {
         losx(tab, statek);
     }
 }
-void SG(int tab[12][12]){
-    int kol = Kol();
-    int wier = Wier();
+void SG(int tab[12][12], bool &re){
+    int kol = podaj(1,re);
+    if(kol == 113){return;}
+    int wier = podaj(2,re);
+    if(wier == 113){return;}
     if(tab[wier][kol] == 0 or tab[wier][kol] == 5){tab[wier][kol] = 7;}
     else if(tab[wier][kol] < 5 and tab[wier][kol]>0){tab[wier][kol] = 8;}
 }
@@ -112,6 +100,11 @@ int TEST(int tab[12][12]){
 void Komunikat(int TK[12][12],int TG[12][12],bool &losowanie,bool &re){
     int tk = TEST(TK);
     int tg = TEST(TG);
+    if(tk == tg and tk == 0){
+        losowanie = true;
+        cout<<cls<<bred<<blu<<"Remis"<<nor;
+        jeszcze(re);
+    }
     if(tk == 0){
         losowanie = true;
         cout<<cls<<bred<<blu<<"Wygral Gracz"<<nor;
@@ -125,7 +118,7 @@ void Komunikat(int TK[12][12],int TG[12][12],bool &losowanie,bool &re){
 }
 int main(){
     srand(time(NULL));
-    cout<<cls;
+    cout<<cls<<"\033[?25l";
     bool re = true;
     bool losowanie = true;
     do{
@@ -140,10 +133,12 @@ int main(){
             plansza(TK, 31, 2);
             losowanie = false;}
         gotoxy(3, 1);
-        cout<<"Plansza Gracz Statki: "<<TEST(TG);
+        cout<<line<<"Plansza Gracz Statki: "<<TEST(TG);
         gotoxy(31, 1);
         cout<<"Plansza Komputera Statki: "<<TEST(TK);
-        SG(TK);
+        gotoxy(3, 17);
+        cout<<"Nacisznij [Q] w dowolnym momencie gry aby wyjsc z porgramy.";
+        SG(TK,re);
         SK(TG);
         plansza(TG, 3, 2);
         plansza(TK, 31, 2);

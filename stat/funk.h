@@ -24,7 +24,7 @@
 #define bpir "\033[45m"      
 #define bcya    "\033[46m"      
 #define bwhi   "\033[47m"
-
+#define cls "\033[2J"
 using namespace std;
 //
 //int getch(void) 

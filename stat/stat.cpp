@@ -113,20 +113,19 @@ void Komunikat(int TK[12][12],int TG[12][12],bool &losowanie,bool &re){
     int tk = TEST(TK);
     int tg = TEST(TG);
     if(tk == 0){
-        system("cls");
         losowanie = true;
-        cout<<endl<<bred<<blu<<"Wygral Gracz"<<nor;
+        cout<<cls<<bred<<blu<<"Wygral Gracz"<<nor;
         jeszcze(re);
     }
     if(tg == 0){
-        system("cls");
         losowanie = true;
-        cout<<endl<<bred<<blu<<"Wygral Komputer"<<nor;
+        cout<<cls<<bred<<blu<<"Wygral Komputer"<<nor;
         jeszcze(re);
     }
 }
 int main(){
     srand(time(NULL));
+    cout<<cls;
     bool re = true;
     bool losowanie = true;
     do{

@@ -1,6 +1,7 @@
 #include "funk.h"
 #include <iostream>
 #include <stdlib.h>
+#include <fstream>
 using namespace std;
 
 void plansza(int tab[12][12],int x,int y){
@@ -116,14 +117,52 @@ void Komunikat(int TK[12][12],int TG[12][12],bool &losowanie,bool &re){
         jeszcze(re);
     }
 }
+void zapis(int tab1[12][12], int tab2[12][12]){
+    fstream plik;
+    plik.open("plansza.txt",ios::out);
+    for(int i = 1;i<11;i++){
+        for(int j = 1;j<11;j++){
+            plik<<tab1[i][j]<<endl<<tab2[i][j]<<endl;
+        }
+    }
+    plik.close();
+}
+void odczyt(int tab1[12][12], int tab2[12][12]){
+    fstream plik;
+    plik.open("plansza.txt",ios::in);
+    for(int i = 1;i<11;i++){
+        for(int j = 1;j<11;j++){
+            plik>>tab1[i][j];
+            plik>>tab2[i][j];
+        }
+    }
+    plik.close();
+}
 int main(){
+    int TG[12][12];
+    int TK[12][12];
     srand(time(NULL));
     cout<<cls<<"\033[?25l";
     bool re = true;
     bool losowanie = true;
+    fstream plik;
+    cout<<"czy chesz wczytac zapis?(t/n)\n";
+    if(getin()=='t'){
+        plik.open("plansza.txt",ios::in);
+        if(plik.is_open()){
+            losowanie = false;
+            odczyt(TG, TK);
+            cout<<cls;
+            plansza(TG, 3, 2);
+            plansza(TK, 31, 2);
+        }
+        else{
+            cout<<"nie ma pliku program zostanie zamknięty";
+            getch();
+            return 0;
+        }
+    }
     do{
-        int TG[12][12];
-        int TK[12][12];
         if(losowanie){
             zeruj(TG); 
             zeruj(TK);
@@ -137,11 +176,12 @@ int main(){
         gotoxy(31, 1);
         cout<<"Plansza Komputera Statki: "<<TEST(TK);
         gotoxy(3, 17);
-        cout<<"Nacisznij [Q] w dowolnym momencie gry aby wyjsc z porgramy.";
+        cout<<"Nacisznij [Q] w dowolnym momencie gry aby wyjsc z programu.";
         SG(TK,re);
         SK(TG);
         plansza(TG, 3, 2);
         plansza(TK, 31, 2);
+        zapis(TG, TK);
         Komunikat(TK, TG, losowanie, re);
     }while(re==true);
     return 0;

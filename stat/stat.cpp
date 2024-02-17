@@ -41,13 +41,13 @@ void losx(int tab[12][12],int n){
         for(int i=0;i<n;i++){
             if(tab[y+i*k][x-(k-1)*i] != 0){good = false;break;}}
     }while (good == false);
-    tab[y+k*n][x+(k-1)]=5;
-    tab[y-k][x-(k-1)*n]=5;
-    for(int i=0;i<n;i++){
+    for(int i=-1;i<n+1;i++){
         tab[y+i*k][x-(k-1)*i]=n;
         tab[y+i*k+(k-1)][x-(k-1)*i+k]=5;
         tab[y+i*k-(k-1)][x-(k-1)*i-k]=5;
     }
+    tab[y+k*n][x+(k-1)]=5;
+    tab[y-k][x-(k-1)*n]=5;
 }
 int podaj(int d, bool&re){
     int input = 0;
@@ -84,8 +84,12 @@ void SG(int tab[12][12], bool &re){
     else if(tab[wier][kol] < 5 and tab[wier][kol]>0){tab[wier][kol] = 8;}
 }
 void SK(int tab[12][12]){
-    int kol = los(10);
-    int wier = los(10);
+    int kol;
+    int wier;
+    do {
+        kol = los(10);
+        wier = los(10);
+    }while(tab[wier][kol]==8 or tab[wier][kol]==7);
     if(tab[wier][kol] == 0 or tab[wier][kol] == 5){tab[wier][kol] = 7;}
     else if(tab[wier][kol] < 5 and tab[wier][kol]>0){tab[wier][kol] = 8;}
 }
@@ -145,9 +149,9 @@ int main(){
     cout<<cls<<"\033[?25l";
     bool re = true;
     bool losowanie = true;
-    fstream plik;
     cout<<"czy chesz wczytac zapis?(t/n)\n";
     if(getin()=='t'){
+        fstream plik;
         plik.open("plansza.txt",ios::in);
         if(plik.is_open()){
             losowanie = false;
@@ -161,6 +165,7 @@ int main(){
             getch();
             return 0;
         }
+        plik.close();
     }
     do{
         if(losowanie){
@@ -178,10 +183,10 @@ int main(){
         gotoxy(3, 17);
         cout<<"Nacisznij [Q] w dowolnym momencie gry aby wyjsc z programu.";
         SG(TK,re);
+        zapis(TG, TK);
         SK(TG);
         plansza(TG, 3, 2);
         plansza(TK, 31, 2);
-        zapis(TG, TK);
         Komunikat(TK, TG, losowanie, re);
     }while(re==true);
     return 0;

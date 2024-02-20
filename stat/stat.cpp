@@ -8,19 +8,19 @@ void plansza(int tab[12][12],int x,int y){
     char top[12] = {'0','A','B','C','D','E','F','G','H','I','J','0'};
     for(int i = 0;i<12;i++){
         gotoxy(x+i*2, y);
-        cout<<bla<<bwhi<<top[i]<<' '<<nor;
+        cout<<black<<bgwhite<<top[i]<<' '<<normal;
         gotoxy(x+i*2, y+11);
-        cout<<bla<<bwhi<<top[i]<<' '<<nor;
+        cout<<black<<bgwhite<<top[i]<<' '<<normal;
     }
     for(int i=1;i<11;i++){
         gotoxy(x, y+i);
-        cout<<bla<<bwhi<<"  \033[2D"<<i<<nor;
+        cout<<black<<bgwhite<<"  \033[2D"<<i<<normal;
         for(int j=1;j<11;j++){
             gotoxy(x+(j*2), y+i);
             color(tab[i][j]);
         }
         gotoxy(x+22, y+i);
-        cout<<bla<<bwhi<<"  \033[2D"<<i<<nor;
+        cout<<black<<bgwhite<<"  \033[2D"<<i<<normal;
     }
 }
 void zeruj(int tab[12][12]){
@@ -107,17 +107,17 @@ void Komunikat(int TK[12][12],int TG[12][12],bool &losowanie,bool &re){
     int tg = TEST(TG);
     if(tk == tg and tk == 0){
         losowanie = true;
-        cout<<cls<<bred<<blu<<"Remis"<<nor;
+        cout<<cls<<bgred<<blue<<"Remis"<<normal;
         jeszcze(re);
     }
     if(tk == 0){
         losowanie = true;
-        cout<<cls<<bred<<blu<<"Wygral Gracz"<<nor;
+        cout<<cls<<bgred<<blue<<"Wygral Gracz"<<normal;
         jeszcze(re);
     }
     if(tg == 0){
         losowanie = true;
-        cout<<cls<<bred<<blu<<"Wygral Komputer"<<nor;
+        cout<<cls<<bgred<<blue<<"Wygral Komputer"<<normal;
         jeszcze(re);
     }
 }

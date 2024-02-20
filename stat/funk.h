@@ -8,23 +8,23 @@
 //#include <termios.h> 
 //#include <unistd.h> 
 //#include <stdio.h> 
-#define nor   "\033[0m"
-#define bla   "\033[30m"      
+#define normal   "\033[0m"
+#define black   "\033[30m"      
 #define red     "\033[31m"      
-#define gre   "\033[32m"      
-#define yel  "\033[33m"      
-#define blu    "\033[34m"      
-#define pir "\033[35m"      
-#define cya    "\033[36m"      
-#define whi   "\033[37m"
-#define bbla   "\033[40m"      
-#define bred     "\033[41m"      
-#define bgre   "\033[42m"      
-#define byel  "\033[43m"      
-#define bblu    "\033[44m"      
-#define bpir "\033[45m"      
-#define bcya    "\033[46m"      
-#define bwhi   "\033[47m"
+#define green   "\033[32m"      
+#define yellow  "\033[33m"      
+#define blue    "\033[34m"      
+#define pirple "\033[35m"      
+#define cyan    "\033[36m"      
+#define white   "\033[37m"
+#define bgblack   "\033[40m"      
+#define bgred     "\033[41m"      
+#define bggreen   "\033[42m"      
+#define bgyellow  "\033[43m"      
+#define bgblue    "\033[44m"      
+#define bgpirple "\033[45m"      
+#define bgcyan    "\033[46m"      
+#define bgwhite   "\033[47m"
 #define cls "\033[2J\033[H"
 #define line "\033[2K"
 using namespace std;
@@ -69,31 +69,31 @@ int los(int x){
 void color(int n){
     switch (n) {
         case 0:
-            cout<<cya<<bblu<<"  "<<nor;
+            cout<<cyan<<bgblue<<"  "<<normal;
             break;
         case 1:
-            cout<<whi<<bbla<<"1 "<<nor;
+            cout<<white<<bgblack<<"1 "<<normal;
             break;
         case 2:
-            cout<<whi<<bbla<<"2 "<<nor;
+            cout<<white<<bgblack<<"2 "<<normal;
             break;
         case 3:
-            cout<<whi<<bbla<<"3 "<<nor;
+            cout<<white<<bgblack<<"3 "<<normal;
             break;
         case 4:
-            cout<<whi<<bbla<<"4 "<<nor;
+            cout<<white<<bgblack<<"4 "<<normal;
             break;
         case 5:
-            cout<<yel<<bblu<<"  "<<nor;
+            cout<<yellow<<bgblue<<"  "<<normal;
             break;
         case 7:
-            cout<<red<<bblu<<"O "<<nor;
+            cout<<red<<bgblue<<"O "<<normal;
             break;
         case 8:
-            cout<<gre<<bblu<<"X "<<nor;
+            cout<<green<<bgblue<<"X "<<normal;
             break;
         default:
-            cout<<blu<<bblu<<n<<nor;
+            cout<<blue<<bgblue<<n<<normal;
             break;
     }
 }

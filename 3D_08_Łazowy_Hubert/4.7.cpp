@@ -1,28 +1,30 @@
-#include "funk.h"
+#include <iomanip>
 #define max 100
+#include "funk.h"
 
 using namespace std;
 
+bool pierw(int n){
+    bool out = true;
+    for(int i=2;i<n/2+1;i++){
+        if(n%i==0){out = false;break;}
+    }
+    return out;
+}
 void znajdz(int tab[max][max], int n, int m){
-    int maxim[3] = {0,0,tab[0][0]};
-    int minim[3] = {0,0,tab[0][0]};
+    int suma = 0;
+    float il = 0;
     for(int i=0;i<n;i++){
         for(int j=0;j<m;j++){
-            int wart = tab[i][j]; 
-            if(wart<minim[2]){
-                minim[0] = i;
-                minim[1] = j;
-                minim[2] = wart;
-            }
-            if(wart>maxim[2]){
-                maxim[0] = i;
-                maxim[1] = j;
-                maxim[2] = wart;
+            int wart = tab[i][j];    
+            if(pierw(wart)){
+                cout<<"("<<i<<","<<j<<") "<<wart<<" jest pierwsza\n";
+                suma = suma + wart;
+                il++;
             }
         }
     }
-    cout<<"wartosc maksymalna:"<<maxim[2]<<" index: "<<maxim[0]<<","<<maxim[1]<<endl;
-    cout<<"wartosc minimalna:"<<minim[2]<<" index: "<<minim[0]<<","<<minim[1]<<endl;
+    cout<<fixed<<setprecision(2)<<"suma: "<<suma<<"\nsrednia: "<<suma/il;
 }
 int main(){
     srand(time(NULL));

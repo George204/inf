@@ -1,17 +1,11 @@
 from funk import *
 max = 5
 
-def sortt(tab):
-    zmaina = 1
-    while(zmaina == 1):
-        zmaina = 0
-        for i in range(len(tab)-1):
-            if tab[i]>tab[i+1]:
-                zmaina = 1
-                schowek = tab[i]
-                tab[i] = tab[i+1]
-                tab[i+1] = schowek
-    return sorted(tab)
+def sprczyw(n, tab, size):
+    for i in range(size):
+        if tab[i] == n:
+            return "tak"
+    return "nie"
 
 def main():
     re = True
@@ -25,9 +19,10 @@ def main():
         else:
             lost(tab,size)
         piszt(tab,size)
-        tab = sortt(tab)
-        piszt(tab,size)
+        szuk = inputh("jako liczbe chcesz sprawdzic?:")
+        print(f"czy jest:{sprczyw(szuk,tab,size)}")
         re = jeszcze()
 
 if __name__ == "__main__":
     main()
+

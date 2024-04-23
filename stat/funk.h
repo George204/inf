@@ -1,13 +1,13 @@
 #include <cctype>
 #include <cstdlib>
 #include <iostream>
-#include <conio.h>
+//#include <conio.h>
 #include <string>
 #include <ctime>
 #define maxx 12
-//#include <termios.h> 
-//#include <unistd.h> 
-//#include <stdio.h> 
+#include <termios.h> 
+#include <unistd.h> 
+#include <stdio.h> 
 #define normal   "\033[0m"
 #define black   "\033[30m"      
 #define red     "\033[31m"      
@@ -28,19 +28,19 @@
 #define cls "\033[2J\033[H"
 #define line "\033[2K"
 using namespace std;
-//
-//int getch(void) 
-//{ 
-//    struct termios oldattr, newattr; 
-//    int ch; 
-//    tcgetattr(STDIN_FILENO, &oldattr); 
-//    newattr = oldattr; 
-//    newattr.c_lflag &= ~(ICANON | ECHO); 
-//    tcsetattr(STDIN_FILENO, TCSANOW, &newattr); 
-//    ch = getchar(); 
-//    tcsetattr(STDIN_FILENO, TCSANOW, &oldattr); 
-//    return ch; 
-//}
+
+int getch(void) 
+{ 
+    struct termios oldattr, newattr; 
+    int ch; 
+    tcgetattr(STDIN_FILENO, &oldattr); 
+    newattr = oldattr; 
+    newattr.c_lflag &= ~(ICANON | ECHO); 
+    tcsetattr(STDIN_FILENO, TCSANOW, &newattr); 
+    ch = getchar(); 
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldattr); 
+    return ch; 
+}
 void gotoxy(int x, int y)
 {    
     printf("%c[%d;%df",0x1B,y,x);

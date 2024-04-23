@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void makew(int wspol[max][max],int wt[max][max],int wxt[max][max],int wyt[max][max], int wzt[max][max]){
+void makew(int wspol[maxx][maxx],int wt[max][max],int wxt[max][max],int wyt[max][max], int wzt[max][max]){
     for(int i=0;i<=2;i++){
        wt[i][0] = wspol[i][0]; 
        wt[i][1] = wspol[i][1]; 
@@ -47,10 +47,12 @@ int main(){
     srand(time(NULL));
     bool re = true;
     do{
-        int wspol[max][max] = {
-            {1,3,2,7},
-            {7,4,9,15},
-            {5,6,8,17}};
+        // int wspol[max][max] = {
+        //     {1,3,2,7},
+        //     {7,4,9,15},
+        //     {5,6,8,17}};
+        int wspol[100][100];
+        czytajt2(wspol,3, 4);
         int wt[max][max], wxt[max][max], wyt[max][max], wzt[max][max];
         makew(wspol,wt,wxt,wyt,wzt);
         float wyz[4] = {wyznacznik(wt),wyznacznik(wxt),wyznacznik(wyt),wyznacznik(wzt)};

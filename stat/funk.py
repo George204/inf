@@ -42,6 +42,12 @@ def getin():
         wart = getch().lower()
     return wart
 
+def get(re):
+    key = ord(getch().lower())
+    if(key == 113):
+        re[0] = False
+    return key
+
 def jeszcze():
     print("jeszcze raz? (T/n)")
     if getin() != b't':

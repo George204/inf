@@ -38,6 +38,28 @@ def losx(tab,n):
     tab[y+k*n][x+(k-1)]=5
     tab[y-k][x-(k-1)*n]=5
 
+def podaj(d,re):
+    input = 0
+    if d == 1:
+        gotoxy(1,14)
+        print(line+"/n  Podaj Kolumne (A...I): /n"+line,end="")
+    else:
+        gotoxy(3,14)
+        print("10 to ':'\n  Podaj Wiersz (1...10): ",end="")
+    while(input<1 or input > 10):
+        input = get(re)
+        if input == 113:
+            break
+        znak = chr(input + (3-d)*48)
+        gotoxy(2+d, 16)
+        print(znak,end="")
+    return input
+    
+def lost(tab):
+    statki = [4,3,3,2,2,2,1,1,1,1]
+    for i in statki:
+        losx(tab,i)
+
 tablica = [
     [0,0,0,0,0,5,1,2,3,4,0,0], 
     [0,0,0,0,0,5,1,2,3,4,0,0], 

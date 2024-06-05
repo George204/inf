@@ -1,17 +1,17 @@
 from random import randint
 
-from msvcrt import getch
+#from msvcrt import getch
 
-#def getch(char_width=1):
-#    import sys, tty, termios
-#    fd = sys.stdin.fileno()
-#    old_settings = termios.tcgetattr(fd)
-#    try:
-#        tty.setraw(fd)
-#        ch = sys.stdin.read(char_width)
-#    finally:
-#        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-#    return ch
+def getch(char_width=1):
+    import sys, tty, termios
+    fd = sys.stdin.fileno()
+    old_settings = termios.tcgetattr(fd)
+    try:
+        tty.setraw(fd)
+        ch = sys.stdin.read(char_width)
+    finally:
+        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+    return ch
 
 def getin():
     wart =b'z'
@@ -60,7 +60,7 @@ def piszt2(tab, n, m):
     for i in range(0,n):
         print(f"Elementy {i} wiersza: ",end="")
         for j in range(0,m):
-            print(F"{tab[i][j]},",end="")
+            print(F"{tab[i][j]:>2},",end="")
         print()
 
 def czytajt2(tab,n, m):

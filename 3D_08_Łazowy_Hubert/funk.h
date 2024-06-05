@@ -1,11 +1,27 @@
+#include <iomanip>
 #include <iostream>
-#include <conio.h>
+//#include <conio.h>
 #include <string>
 #include <ctime>
 #define maxx 100
+#include <termios.h> 
+#include <unistd.h> 
+#include <stdio.h> 
 
 using namespace std;
 
+int getch(void) 
+{ 
+    struct termios oldattr, newattr; 
+    int ch; 
+    tcgetattr(STDIN_FILENO, &oldattr); 
+    newattr = oldattr; 
+    newattr.c_lflag &= ~(ICANON | ECHO); 
+    tcsetattr(STDIN_FILENO, TCSANOW, &newattr); 
+    ch = getchar(); 
+    tcsetattr(STDIN_FILENO, TCSANOW, &oldattr); 
+    return ch; 
+}
 void gotoxy(int x, int y)
 {    
     printf("%c[%d;%df",0x1B,y,x);
@@ -22,7 +38,7 @@ void jeszcze(bool &re){
     if (getin()!='t'){re = false;}
 }
 int los(int x){
-	int r=1+rand()%(x-2);
+	int r=1+rand()%(x);
 	return r;
 }
 int input(string g){
@@ -59,7 +75,7 @@ void piszt2(int tab[maxx][maxx],int n,int m){
     for(int i=0;i<n;i++){
         cout<<"Elementy "<<i<<" wirsza: ";
         for(int j=0;j<m;j++){
-            cout<<tab[i][j]<<",";
+            cout<<setw(2)<<tab[i][j]<<",";
         }
         cout<<endl;
     }
@@ -76,7 +92,7 @@ void czytajt2(int tab[maxx][maxx], int n, int m){
 void lost2(int tab[maxx][maxx], int n, int m){
     for(int i=0;i<n;i++){
         for(int j=0;j<n;j++){
-            tab[i][j]=los(100);    
+            tab[i][j]=los(99);    
         }    
     }
 }

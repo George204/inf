@@ -37,8 +37,8 @@ def gotoxy(x,y):
     print(f"\x1b[{y+1};{x+1}H",end='')
 
 def getin():
-    wart =b'z'
-    while wart != b't' and wart != b'n':
+    wart ='z'
+    while wart != 't' and wart != 'n':
         wart = getch().lower()
     return wart
 
@@ -50,12 +50,12 @@ def get(re):
 
 def jeszcze():
     print("jeszcze raz? (T/n)")
-    if getin() != b't':
+    if getin() != 't':
         return False
     return True
 
 def los(x):
-    return randint(0,x) 
+    return randint(1,x) 
 
 def inputh(g):
     k = False

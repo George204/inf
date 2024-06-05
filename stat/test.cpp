@@ -1,14 +1,10 @@
 #include <iostream>
-#include <conio.h>
-#include <fstream>
-
+#include "funk.h"
 using namespace std;
 
 int main () {
-    fstream plik;
-    plik.open("test.txt",ios::in);
-    if(plik.is_open()){cout<<"plik istnieje";}
-    else{cout<<"plik nie istnieje";}
-    getch();
+    for(int i =0;i<21;i++){
+        cout<<los(2);
+    }
     return 0;
 }

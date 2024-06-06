@@ -46,19 +46,25 @@ def losx(tab,n):
 
 def podaj(d,re):
     input = 0
+    print("podawanie")
     if d == 1:
+        print("kolumny")
         gotoxy(1,14)
-        print(line+"/n  Podaj Kolumne (A...I): /n"+line,end="")
+        print("\nPodaj Kolumne (A...I):")
     else:
         gotoxy(3,14)
-        print("10 to ':'\n  Podaj Wiersz (1...10): ",end="")
+        print("10 to ':'")
+        gotoxy(1,14)
+        print("Podaj Wiersz (1...10): ")
     while(input<1 or input > 10):
         input = get(re)
         if input == 113:
+            re = [False]
             break
-        znak = chr(input + (3-d)*48)
-        gotoxy(2+d, 16)
-        print(znak,end="")
+        input -= (3-d)*48
+    znak = chr(input + (3-d)*48)
+    gotoxy(2+d, 16)
+    print(znak)
     return input
     
 def lost(tab):
@@ -130,32 +136,26 @@ def main():
     TG = [row[:] for row in tablica]
     TK = [row[:] for row in tablica]
     print(cls+"\033[?25l")
-    re = True
+    re = [True]
     losowanie = True
     print("czy chesz wczytac zapis?(t/n)\n")
     #if(getin()=='t'):
-    while(re == True):
+    while(re[0] == True):
         if(losowanie):
             zeruj(TG)
             zeruj(TK)
-            print("koniec zerowania")
             lost(TG)
-            print("koniec losowanie tg")
-            print(TG)
-            print(TK)
             lost(TK)
-            print("koniec losowanie")
             plansza(TG, 3, 2)
             plansza(TK, 31,2)
-            print("koniec planszy")
             losowanie = False
         gotoxy(3, 1)
-        print(line+"Plansza Gracz Statki: "+str(TEST(TG)))
+        print("Plansza Gracz Statki: "+str(TEST(TG)))
         gotoxy(31, 1)
         print("Plansza Komputera Statki: "+str(TEST(TK)))
         gotoxy(3, 17)
         print("Nacisznij [Q] w dowolnym momencie gry aby wyjsc z programu.")
-        SG(TK,[re])
+        SG(TK,re)
         #zapis(TG,TK)
         SK(TG)
         plansza(TG,3,2)

@@ -1,6 +1,5 @@
 from random import randint
-
-#from msvcrt import getch
+from msvcrt import getch
 
 normal  = "\033[0m"
 black   = "\033[30m"      
@@ -22,16 +21,16 @@ bgwhite   = "\033[47m"
 cls = "\033[2J\033[H"
 line = "\033[2K"
 
-def getch(char_width=1):
-    import sys, tty, termios
-    fd = sys.stdin.fileno()
-    old_settings = termios.tcgetattr(fd)
-    try:
-        tty.setraw(fd)
-        ch = sys.stdin.read(char_width)
-    finally:
-        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-    return ch
+#def getch(char_width=1):
+#    import sys, tty, termios
+#    fd = sys.stdin.fileno()
+#    old_settings = termios.tcgetattr(fd)
+#    try:
+#        tty.setraw(fd)
+#        ch = sys.stdin.read(char_width)
+#    finally:
+#        termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+#    return ch
 
 def gotoxy(x,y):
     print(f"\x1b[{y+1};{x+1}H",end='')
@@ -39,7 +38,7 @@ def gotoxy(x,y):
 def getin():
     wart ='z'
     while wart != 't' and wart != 'n':
-        wart = getch().lower()
+        wart = getch().lower().decode()
     return wart
 
 def get(re):

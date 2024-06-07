@@ -1,3 +1,4 @@
+from os import error
 from funk import *
 top = ['0','A','B','C','D','E','F','G','H','I','J','0']
 
@@ -28,17 +29,13 @@ def losx(tab,n):
         k = los(2)-1
         x = los(7+(n-1)*k)
         y = los(10-(n-1)*k)
-        #print(k," ",x," ",y)
         good = True
         for i in range(n):
             if tab[y+i*k][x-(k-1)*i] != 0:
                 good = False
                 break
     for i in range(-1,n+1):
-        #print(y+i*k,x-(k-1)*i)
         tab[y+i*k][x-(k-1)*i]=n
-        #print(y+i*k+(k-1),x-(k-1)*i+k)
-        #print(y+i*k-(k-1),x-(k-1)*i-k)
         tab[y+i*k+(k-1)][x-(k-1)*i+k]=5
         tab[y+i*k-(k-1)][x-(k-1)*i-k]=5
     tab[y+k*n][x+(k-1)]=5
@@ -46,16 +43,16 @@ def losx(tab,n):
 
 def podaj(d,re):
     input = 0
-    print("podawanie")
     if d == 1:
-        print("kolumny")
-        gotoxy(1,14)
-        print("\nPodaj Kolumne (A...I):")
+        gotoxy(3,14)
+        print("               ")
+        gotoxy(3,15)
+        print("Podaj Kolumne (A...I):")
     else:
         gotoxy(3,14)
         print("10 to ':'")
-        gotoxy(1,14)
-        print("Podaj Wiersz (1...10): ")
+        gotoxy(3,15)
+        print("Podaj Wiersz (1...10):")
     while(input<1 or input > 10):
         input = get(re)
         if input == 113:
@@ -79,6 +76,8 @@ def SG(tab, re):
     wier = podaj(2,re)
     if wier == 113:
         return
+    gotoxy(3,16)
+    print("   ")
     if tab[wier][kol] == 0 or tab[wier][kol] == 5:
         tab[wier][kol] = 7
     elif tab[wier][kol] < 5 and tab[wier][kol]>0:
@@ -118,6 +117,26 @@ def Komunikat(TK,TG,ref):
         print(cls+bgred+blue+"Wygral Komputer",end=normal)
         ref[1] = jeszcze()
 
+def zapisz(tab1,tab2):
+    plik = open("plansza.txt","w")
+    for i in range(1,11):
+        for j in range(1,11):
+            plik.write(str(tab1[i][j])+"\n")
+            plik.write(str(tab2[i][j])+"\n")
+    plik.close
+def odczyt(tab1,tab2):
+    plik = open("plansza.txt","r")
+    text = plik.read()
+    lista = text.split("\n")
+    lista = lista[:-1]
+    for i in range(1,11):
+        for j in range(1,11):
+            tab1[i][j] = int(lista[((i-1)*10+j-1)*2])
+            tab2[i][j] = int(lista[((i-1)*10+j-1)*2+1])
+    plik.close
+
+
+
 tablica = [
     [0,0,0,0,0,0,0,0,0,0,0,0], 
     [0,0,0,0,0,0,0,0,0,0,0,0], 
@@ -138,8 +157,18 @@ def main():
     print(cls+"\033[?25l")
     re = [True]
     losowanie = True
-    print("czy chesz wczytac zapis?(t/n)\n")
-    #if(getin()=='t'):
+    print("czy chesz wczytac zapis?(t/n)")
+    if(getin()=='t'):
+        try:
+            odczyt(TG,TK)
+            losowanie = False
+        except:
+            print("nie ma pliku program zostanie zamknięty")
+            getch()
+            return
+    print(cls)
+    plansza(TG, 3, 2)
+    plansza(TK, 31,2)
     while(re[0] == True):
         if(losowanie):
             zeruj(TG)
@@ -156,7 +185,7 @@ def main():
         gotoxy(3, 17)
         print("Nacisznij [Q] w dowolnym momencie gry aby wyjsc z programu.")
         SG(TK,re)
-        #zapis(TG,TK)
+        zapisz(TG,TK)
         SK(TG)
         plansza(TG,3,2)
         plansza(TK,31,2)

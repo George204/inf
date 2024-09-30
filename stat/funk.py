@@ -69,40 +69,6 @@ def inputh(g):
             break 
     return x
 
-def piszt(tab,n):
-    print("Elementy Tablicy:",end="")
-    for i in range(0,n):
-        print(F"{tab[i]},",end="")
-    print()
-
-def czytajt(tab,n):
-    for i in range(0,n):
-        x = inputh(f"elemnt nr {i+1}:")
-        tab[i] = x
-
-def lost(tab,n):
-    for i in range(0,n):
-        tab[i] = los(9)
-
-def piszt2(tab, n, m):
-    for i in range(0,n):
-        print(f"Elementy {i} wiersza: ",end="")
-        for j in range(0,m):
-            print(F"{tab[i][j]},",end="")
-        print()
-
-def czytajt2(tab,n, m):
-    for i in range(0,n):
-        for j in range(0,m):
-            x = inputh(f"elemnt ({i+1},{j+1}):")
-            tab[i][j] = x 
-
-def lost2(tab,n, m):
-    for i in range(0,n):
-        buff = [0]*m
-        lost(buff,m)
-        tab[i] = buff
-
 def color(n):
     if n == 0:
         print(cyan+bgblue+"  ",end=normal)

@@ -1,0 +1,52 @@
+A)
+rodzaj_uslugi	SumOfrata
+L	391 790,00 zł
+W	400 713,00 zł
+B)
+firma	Expr1
+BARTEX	PN3661T
+BARTEX	PN3651R
+BARTEX	PN3641B
+BARTEX	PN3631H
+BARTEX	PN3621I
+BARTEX	PN16838
+BARTEX	PN16836
+BARTEX	PN16834
+BARTEX	PN16832
+BARTEX	PN16830
+BARTEX	PN16828
+BARTEX	PN16826
+BARTEX	PN16824
+BARTEX	PN16822
+C)
+firma	CountOfID
+WROCBUD2	13
+D)
+powiat
+bedzinski
+bialostocki
+braniewski
+buski
+elblaski
+elcki
+gorowski
+jeleniogorski
+kluczborski
+koscianski
+leczynski
+lubelski
+nyski
+olawski
+olsztynski
+opolski
+pilski
+siemiatycki
+tarnobrzeski
+tarnogorski
+tarnowski
+turecki
+zamojski
+E)
+BARTEX		2 325,64 zł
+WIET-IND	2 556,43 zł
+REFAMUR		2 590,13 zł

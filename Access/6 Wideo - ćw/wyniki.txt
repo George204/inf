@@ -1,0 +1,32 @@
+A)
+ID_filmu	Tytul							Gatunek
+AA2005		Charlie i fabryka czekolady				familijny
+AB2005		Madagaskar						familijny
+AC2005		Kevin sam w domu					familijny
+BD2005		Opowiesci z Narnii: Lew, czarownica i stara szafa	familijny
+B)
+Gatunek	PoliczOfID_wyp
+horror	97
+C)
+Wyr1	Wyr2	PoliczOfID_wyp
+2011	6	24
+2011	7	31
+2011	8	31
+2011	9	37
+2011	10	45
+2011	11	48
+2011	12	58
+D)
+Imie		Nazwisko	SumaOfCena_w_zl
+Bartlomiej	Wojciechowski	77
+E)
+Tytul
+Jumper
+Straszny film
+Katyn
+Oszukac przeznaczenie
+Mgla
+Pianista
+Eurotrip
+The Ring
+Mumia

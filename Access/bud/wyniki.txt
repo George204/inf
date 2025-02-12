@@ -1,0 +1,35 @@
+A
+PoliczOfIdentyfikator	Nazwa_sprzetu
+28	Rusztowanie aluminiowe wys. 5m
+B
+Nr_dowodu_osoby	SumaOfKaucja
+JCK343973	1750
+C
+Imie		Nazwisko
+Adam		Adamski
+Adam		Wozniak
+Andrzej		Rydawski
+Izabela		Kusz
+Jakub		Kowalski
+Jan		Podsiadly
+Marcin		Budzisz
+Marcin		Kucharski
+Michal		Adamczyk
+Wojciech	Dudek
+D
+PoliczOfNr_dowodu_osoby
+68
+E
+Wyr1	Wyr2	Wyr3
+1	5100	43307
+2	5450	35441
+3	7100	46181
+4	6850	54162
+5	10100	81019
+6	12850	95315
+7	14950	111173
+8	14100	96436
+9	13750	101491
+10	6800	66041
+11	5300	47754
+12	4750	36435

@@ -1,0 +1,34 @@
+6-1
+nazwisko	Wyr1
+Bogdzio		7434,71
+Opyrchlo	5872,41
+Ottenlinger	4449,58
+Tananko		4506,48
+suma		22263,18
+6-2
+Wyr2	Wyr1	SumaOfWyr3
+2013	8	1312185,6
+2013	9	1266883,2
+2013	10	1351785,6
+2013	11	1207324,8
+2013	12	1200320
+2014	1	1472240
+6-3
+abdiasz erykh
+6-4
+imie	nazwisko	wojewodztwo
+Eulalia	Dryzba	podlaskie
+Luba	Kierzek	podlaskie
+Tycjan	Parobi	podlaskie
+6-5
+nazwa_us					koks		mol
+Pierwszy Urzad Skarbowy Warszawa-srodmiescie	41086,55	14105,51
+Trzeci Urzad Skarbowy Warszawa-srodmiescie	14105,03	16808,26
+Urzad Skarbowy Warszawa-Bemowo			20433,17	33149,94
+Urzad Skarbowy Warszawa-Bielany			35013,39	11954,69
+Urzad Skarbowy Warszawa-Mokotow			27271,27	17291,91
+Urzad Skarbowy Warszawa-Praga			3094,53		16552,21
+Urzad Skarbowy Warszawa-Targowek		27537,84	8523,62
+Urzad Skarbowy Warszawa-Ursynow			8889,53		10264,76
+Urzad Skarbowy Warszawa-Wawer			22612,09	4017,14
+Urzad Skarbowy Warszawa-Wola			6177,47		28478,45

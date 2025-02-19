@@ -1,0 +1,23 @@
+a)
+Nazwisko	Punkty	Rok	GrandPrix
+Kubica		18	2010	Australia
+b)
+GrandPrix	PoliczOfId_wyscigu
+Indie		2
+c)
+Rok	Imie	Nazwisko	SumaOfPunkty
+2000	Michael	Schumacher	108
+2006	Fernando	Alonso	134
+2012	Sebastian	Vettel	281
+d)
+Kraj		PoliczOfId_kierowcy
+Niemcy		4
+Wielka Brytania	3
+Francja		2
+Brazylia	2
+Australia	2
+Wenezuela	1
+Meksyk		1
+Japonia		1
+Hiszpania	1
+Finlandia	1

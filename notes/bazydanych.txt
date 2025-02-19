@@ -1,0 +1,4 @@
+
+Bazy danych:
+Uporzondkowant zbiór danych o okroeślonej struktórze porzechowywany w pamięci komputera.
+

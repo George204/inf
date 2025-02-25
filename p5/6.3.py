@@ -1,8 +1,8 @@
 text = input("podaj text:")
-text.strip(" ")
+text = text.replace(" ","")
 
 def pali(n):
-        if n[i] != n[-i]:
-            return "text nie jest palindromem"
+    if n != n[::-1]:
+        return "text nie jest palindromem"
     return "text jest palindromem"
 print(pali(text))

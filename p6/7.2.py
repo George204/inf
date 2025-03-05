@@ -1,6 +1,6 @@
 #odpowiedzi pod punktu a) motor -> mtroo arka -> akra
 #odpowiedz pod punktu b)k
-s = input("podaj słowo")
+s = input("podaj słowo:")
 w =''
 odd = False
 for i in s:

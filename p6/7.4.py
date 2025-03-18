@@ -19,6 +19,7 @@ def rosn(s):
     for i in s:
         if ord(i)<=last:
             return False
+        last = ord(i)
     return True
 
 def inq(t):
@@ -33,7 +34,7 @@ print(f'{pierwsze[0]} napisów pierwszych')
 #b
 ros = []
 [ros.append(i) for i in napisy if rosn(i)]
-pprint(ros)
+print(f"napisy rosnące: {ros}\n")
 #c
 [napisy.remove(i) for i in set(napisy)]
 pprint(set(napisy))
